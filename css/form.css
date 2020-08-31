@@ -1,0 +1,31 @@
+h1{
+  display:flex;
+  font-size: 35px;
+  justify-content:center;
+  align-items:center;
+  letter-spacing: 4px;
+  color : gray;
+}
+
+form{
+  margin:auto;
+  width: 700px;
+  margin-top:100px; 
+  align-items:center;
+  justify-content:center;
+}
+
+input{
+  margin: 10px;
+  padding:8px;
+  font-size:14px;
+  width:630px;
+}
+
+textarea{
+  margin : 10px;
+  padding : 8px;
+  width : 630px;
+  height: 120px;
+  margin-bottom:5px;
+}

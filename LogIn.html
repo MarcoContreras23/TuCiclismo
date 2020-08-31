@@ -1,0 +1,117 @@
+<html>
+<head>
+    <title>Tu ciclismo</title> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
+        <link rel="icon" href="images/bike.ico">
+        <link rel="stylesheet" href="css/estilos.css">
+        <!--Login google-->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="427177624853-brq1astf89hbcb8sjpvvq85c99msdbjn.apps.googleusercontent.com">
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <figure class="image is-128x128">
+                <img class="is-rounded" src="images/Logo.png">
+            </figure>
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="index.html">Inicio</a>
+      
+            <a class="navbar-item" href="productos.html">Nuestro productos</a>
+          </div>
+        </div>
+        
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary" href="registro.html">Registrarse</a>
+                    <a  class= "button is-primary" href="LogIn.html" onclick="signOut();"><strong>Cerrar sesión</strong></a>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+    <!--fondo particulas-->
+    <div id="particles-js"></div>
+    <script src="js/particles.min.js"></script>
+    <script src="js/particulas.js"></script>
+   
+    <!--Ingreso Usuario registrado-->
+    <main>
+ 
+
+        <form action="" class="formulario" id="formulario">
+             <!-- Grupo: Correo Electronico -->
+             <div class="formulario__grupo" id="grupo__correo">
+                <label for="correo" class="formulario__label">Correo Electrónico</label>
+                <div class="formulario__grupo-input">
+                    <input type="email" class="formulario__input" name="correo" id="correo" placeholder="correo@correo.com">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
+            </div>
+
+            <!-- Grupo: Contraseña -->
+            <div class="formulario__grupo" id="grupo__password">
+                <label for="password" class="formulario__label">Contraseña</label>
+                <div class="formulario__grupo-input">
+                    <input type="password" class="formulario__input" name="password" id="password">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">La contraseña tiene que ser de 4 a 12 dígitos.</p>
+            </div>
+
+            <!-- Grupo: Terminos y Condiciones -->
+            <div class="formulario__grupo" id="grupo__terminos">
+                <label class="formulario__label">
+                    <input class="formulario__checkbox" type="checkbox" name="terminos" id="terminos">
+                    Recordarme
+                </label>
+            </div>
+
+            <div class="formulario__mensaje" id="formulario__mensaje">
+                <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+            </div>
+            <div class="formulario__grupo formulario__grupo-btn-enviar">
+                <button type="submit" class="formulario__btn">Ingresar</button>
+                <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
+            </div>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        
+        </form>
+    </main>
+    <!--Srcipt obtener información usuario-->
+    <script>
+        function onSignIn(googleUser) {
+         var profile = googleUser.getBasicProfile();
+         console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+         console.log('Name: ' + profile.getName());
+         console.log('Image URL: ' + profile.getImageUrl());
+         console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+         var id_token = googleUser.getAuthResponse().id_token;
+         console.log(id_token)
+        }
+    </script> 
+    <!--Srcipt LogOut Usuario-->
+    <script>
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+        });
+      }
+    </script>
+</body>
+
+
+</html>
